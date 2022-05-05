@@ -11,12 +11,12 @@ public class PersonaClass {
 
 	// Se definen los atributos de clase
 	private String nombre = "";
-	private boolean tipoJugador = false;
+	private int tipoJugador = 0;
 	private int fichasPosicionadas = 0;
 	private char fichaAsociada = 'V';
 
 	// Se define constructor de clase con todos los parámetros
-	public PersonaClass(String nombre, boolean tipoJugador, int fichasPosicionadas, char fichaAsociada) {
+	public PersonaClass(String nombre, int tipoJugador, int fichasPosicionadas, char fichaAsociada) {
 		this.nombre = nombre;
 		this.tipoJugador = tipoJugador;
 		this.fichasPosicionadas = fichasPosicionadas;
@@ -41,14 +41,14 @@ public class PersonaClass {
 	/**
 	 * @return the tipoJugador
 	 */
-	public boolean isTipoJugador() {
+	public int getTipoJugador() {
 		return tipoJugador;
 	}
 
 	/**
 	 * @param tipoJugador the tipoJugador to set
 	 */
-	public void setTipoJugador(boolean tipoJugador) {
+	public void setTipoJugador(int tipoJugador) {
 		this.tipoJugador = tipoJugador;
 	}
 
