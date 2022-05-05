@@ -8,6 +8,9 @@ package BTC_Reus2022_M4.tiktaktok.View;
  * @date 05/05/2022
  */
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JFrame;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -18,7 +21,7 @@ import BTC_Reus2022_M4.tiktaktok.Class.CasillaClass;
 
 import javax.swing.JRadioButton;
 
-public class VistaClass {
+public class VistaClass implements ActionListener{
 
 	private JFrame frame;
 	private JTextField txt_Nombre_Jugador_1;
@@ -62,15 +65,15 @@ public class VistaClass {
 		frame.getContentPane().setLayout(null);
 		
 		
-		CasillaClass btn_1 							= new CasillaClass(1,WIDTH, HEIGHT);// Posición fila 1 columna 1
-		CasillaClass btn_2 							= new CasillaClass(2,WIDTH, HEIGHT);// Posición fila 1 columna 2
-		CasillaClass btn_3 							= new CasillaClass(3,WIDTH, HEIGHT);// Posición fila 1 columna 3
-		CasillaClass btn_4 							= new CasillaClass(4,WIDTH, HEIGHT);// Posición fila 2 columna 1
-		CasillaClass btn_5 							= new CasillaClass(5,WIDTH, HEIGHT);// Posición fila 2 columna 2
-		CasillaClass btn_6 							= new CasillaClass(6,WIDTH, HEIGHT);// Posición fila 2 columna 3
-		CasillaClass btn_7 							= new CasillaClass(7,WIDTH, HEIGHT);// Posición fila 3 columna 1
-		CasillaClass btn_8 							= new CasillaClass(8,WIDTH, HEIGHT);// Posición fila 3 columna 2
-		CasillaClass btn_9 							= new CasillaClass(9,WIDTH, HEIGHT);// Posición fila 3 columna 3
+		CasillaClass btn_1 							= new CasillaClass(0,WIDTH, HEIGHT);// Posición fila 1 columna 1
+		CasillaClass btn_2 							= new CasillaClass(1,WIDTH, HEIGHT);// Posición fila 1 columna 2
+		CasillaClass btn_3 							= new CasillaClass(2,WIDTH, HEIGHT);// Posición fila 1 columna 3
+		CasillaClass btn_4 							= new CasillaClass(3,WIDTH, HEIGHT);// Posición fila 2 columna 1
+		CasillaClass btn_5 							= new CasillaClass(4,WIDTH, HEIGHT);// Posición fila 2 columna 2
+		CasillaClass btn_6 							= new CasillaClass(5,WIDTH, HEIGHT);// Posición fila 2 columna 3
+		CasillaClass btn_7 							= new CasillaClass(6,WIDTH, HEIGHT);// Posición fila 3 columna 1
+		CasillaClass btn_8 							= new CasillaClass(7,WIDTH, HEIGHT);// Posición fila 3 columna 2
+		CasillaClass btn_9 							= new CasillaClass(8,WIDTH, HEIGHT);// Posición fila 3 columna 3
 		JButton btn_Nueva_Partida 				= new JButton("Nueva Partida");
 		JLabel lbl_Jugador_1 					= new JLabel("Jugador 1");
 		JLabel lbl_Nombre_Jugador_1 			= new JLabel("Nombre");
@@ -115,6 +118,17 @@ public class VistaClass {
 		radio_Humano_Jugador_2.setBounds(455, 210, 75, 23);
 		radio_CPU_Jugador_2.setBounds(532, 210, 74, 23);
 		btn_Comenzar_Partida.setBounds(420, 286, 137, 23);
+		
+//ActionListeners
+		btn_1.addActionListener(this);
+		btn_2.addActionListener(this);
+		btn_3.addActionListener(this);
+		btn_4.addActionListener(this);
+		btn_5.addActionListener(this);
+		btn_6.addActionListener(this);
+		btn_7.addActionListener(this);
+		btn_8.addActionListener(this);
+		btn_9.addActionListener(this);
 	
 		
 //Adding to content Panel the components
@@ -147,4 +161,45 @@ public class VistaClass {
 		frame.getContentPane().add(btn_1);
 		
 	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		//Geting info from the event
+			CasillaClass btnPress = (CasillaClass)e.getSource();
+				//Getting the text of the widget
+				int name = btnPress.getIdCasilla();
+				
+				//Switching the acction request
+				switch(name) {
+					case 0:
+						System.out.println("Boton 1 pulsado");
+						break;
+					case 1:
+						
+						break;
+					case 2:
+						
+						break;
+					case 3:
+	
+						break;
+					case 4:
+						
+						break;
+					case 5:
+						
+						break;
+					case 6:
+						
+						break;
+					case 7:
+						
+						break;
+					case 8:
+						
+						break;
+	
+		
+	}
+}
 }
