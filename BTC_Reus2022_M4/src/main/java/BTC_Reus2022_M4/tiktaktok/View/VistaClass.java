@@ -28,6 +28,8 @@ public class VistaClass implements ActionListener{
 	private JTextField txt_Nombre_Jugador_2;
 	private final int WIDTH=100;
 	private final int HEIGHT=100;
+	private CasillaClass casilla;
+	public CasillaClass btn_1;
 
 	/**
 	 * Launch the application.
@@ -65,7 +67,7 @@ public class VistaClass implements ActionListener{
 		frame.getContentPane().setLayout(null);
 		
 		
-		CasillaClass btn_1 							= new CasillaClass(0,WIDTH, HEIGHT);// Posición fila 1 columna 1
+		btn_1 							= new CasillaClass(0,WIDTH, HEIGHT);// Posición fila 1 columna 1
 		CasillaClass btn_2 							= new CasillaClass(1,WIDTH, HEIGHT);// Posición fila 1 columna 2
 		CasillaClass btn_3 							= new CasillaClass(2,WIDTH, HEIGHT);// Posición fila 1 columna 3
 		CasillaClass btn_4 							= new CasillaClass(3,WIDTH, HEIGHT);// Posición fila 2 columna 1
@@ -172,7 +174,7 @@ public class VistaClass implements ActionListener{
 				//Switching the acction request
 				switch(name) {
 					case 0:
-						System.out.println("Boton 1 pulsado");
+						btn_1.marcadoCasilla(1);
 						break;
 					case 1:
 						
