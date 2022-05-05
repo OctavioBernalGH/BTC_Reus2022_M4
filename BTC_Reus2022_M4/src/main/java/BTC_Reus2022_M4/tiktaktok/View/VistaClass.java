@@ -8,7 +8,6 @@ package BTC_Reus2022_M4.tiktaktok.View;
  * @date 05/05/2022
  */
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -100,57 +99,57 @@ public class VistaClass {
 		frame.getContentPane().add(btn_9);
 		
 		JButton btn_Nueva_Partida = new JButton("Nueva Partida");
-		btn_Nueva_Partida.setBounds(420, 27, 113, 23);
+		btn_Nueva_Partida.setBounds(420, 252, 137, 23);
 		frame.getContentPane().add(btn_Nueva_Partida);
 		
 		JLabel lbl_Jugador_1 = new JLabel("Jugador 1");
-		lbl_Jugador_1.setBounds(382, 73, 63, 14);
+		lbl_Jugador_1.setBounds(382, 38, 63, 14);
 		frame.getContentPane().add(lbl_Jugador_1);
 		
 		JLabel lbl_Nombre_Jugador_1 = new JLabel("Nombre");
-		lbl_Nombre_Jugador_1.setBounds(382, 98, 63, 14);
+		lbl_Nombre_Jugador_1.setBounds(382, 63, 63, 14);
 		frame.getContentPane().add(lbl_Nombre_Jugador_1);
 		
 		txt_Nombre_Jugador_1 = new JTextField();
-		txt_Nombre_Jugador_1.setBounds(455, 95, 128, 20);
+		txt_Nombre_Jugador_1.setBounds(455, 60, 128, 20);
 		frame.getContentPane().add(txt_Nombre_Jugador_1);
 		txt_Nombre_Jugador_1.setColumns(10);
 		
 		JLabel lbl_Jugador_2 = new JLabel("Jugador 2");
-		lbl_Jugador_2.setBounds(382, 188, 63, 14);
+		lbl_Jugador_2.setBounds(382, 149, 63, 14);
 		frame.getContentPane().add(lbl_Jugador_2);
 		
 		JLabel lbl_Nombre_Jugador_2 = new JLabel("Nombre");
-		lbl_Nombre_Jugador_2.setBounds(382, 213, 63, 14);
+		lbl_Nombre_Jugador_2.setBounds(382, 174, 63, 14);
 		frame.getContentPane().add(lbl_Nombre_Jugador_2);
 		
 		txt_Nombre_Jugador_2 = new JTextField();
 		txt_Nombre_Jugador_2.setColumns(10);
-		txt_Nombre_Jugador_2.setBounds(455, 210, 128, 20);
+		txt_Nombre_Jugador_2.setBounds(455, 171, 128, 20);
 		frame.getContentPane().add(txt_Nombre_Jugador_2);
 		
 		JLabel lbl_Tipo_Jugador_1 = new JLabel("Tipo:");
-		lbl_Tipo_Jugador_1.setBounds(382, 136, 46, 14);
+		lbl_Tipo_Jugador_1.setBounds(382, 108, 46, 14);
 		frame.getContentPane().add(lbl_Tipo_Jugador_1);
 		
 		JLabel lbl_Tipo_Jugador_2 = new JLabel("Tipo:");
-		lbl_Tipo_Jugador_2.setBounds(382, 256, 46, 14);
+		lbl_Tipo_Jugador_2.setBounds(382, 214, 46, 14);
 		frame.getContentPane().add(lbl_Tipo_Jugador_2);
 		
 		JRadioButton radio_Humano_Jugador_1 = new JRadioButton("Humano");
-		radio_Humano_Jugador_1.setBounds(455, 132, 75, 23);
+		radio_Humano_Jugador_1.setBounds(455, 104, 75, 23);
 		frame.getContentPane().add(radio_Humano_Jugador_1);
 		
 		JRadioButton radio_CPU_Jugador_1 = new JRadioButton("CPU");
-		radio_CPU_Jugador_1.setBounds(532, 132, 74, 23);
+		radio_CPU_Jugador_1.setBounds(532, 104, 74, 23);
 		frame.getContentPane().add(radio_CPU_Jugador_1);
 		
 		JRadioButton radio_Humano_Jugador_2 = new JRadioButton("Humano");
-		radio_Humano_Jugador_2.setBounds(455, 252, 75, 23);
+		radio_Humano_Jugador_2.setBounds(455, 210, 75, 23);
 		frame.getContentPane().add(radio_Humano_Jugador_2);
 		
 		JRadioButton radio_CPU_Jugador_2 = new JRadioButton("CPU");
-		radio_CPU_Jugador_2.setBounds(532, 252, 74, 23);
+		radio_CPU_Jugador_2.setBounds(532, 210, 74, 23);
 		frame.getContentPane().add(radio_CPU_Jugador_2);
 		
 		// Se crea una instancia de la clase ButtonGroup para el jugador 1.
@@ -164,6 +163,10 @@ public class VistaClass {
 		// Se añaden los radioButton referentes al jugador 2 al grupo de botones.
 		grupoRadioButtonJugador2.add(radio_Humano_Jugador_2);
 		grupoRadioButtonJugador2.add(radio_CPU_Jugador_2);
+		
+		JButton btn_Comenzar_Partida = new JButton("Comenzar Partida");
+		btn_Comenzar_Partida.setBounds(420, 286, 137, 23);
+		frame.getContentPane().add(btn_Comenzar_Partida);
 		
 	}
 }
