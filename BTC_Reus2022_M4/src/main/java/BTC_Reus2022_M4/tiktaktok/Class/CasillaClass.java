@@ -51,6 +51,7 @@ public class CasillaClass extends JButton{
 				this.setIcon(iconY);
 				this.marcadoCon = 'Y';
 				break;
+				
 		}
 	}
 	//Change to empty
