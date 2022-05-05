@@ -3,7 +3,7 @@ package BTC_Reus2022_M4.tiktaktok.Class;
 import java.util.Iterator;
 
 /**
- * @author Josep Oriol López Bosch
+ * @author Josep Oriol Lï¿½pez Bosch
  * @author David Dalmau Dieguez
  * @author Octavio Bernal Vilana
  * @version 0.0.1
@@ -18,14 +18,17 @@ public class partidaClass {
 	private int turno = 0; 
 	private int ganador = 0;
 
+	// Funcion para el boton de reiniciar
 	private void reiniciarPartida() {
 		
 	}
 	
+	// Funcion para contar las fichas de cada jugador
 	private void comprobarCantidadFichas() {
 		
 	}
 	
+	// Funcion para ver quien a ganado
 	private void comprobarGanador() {	
 		// COMPROBAR GANADOR X
 		if ((c1 == ('X')) && (c2 == ('X')) && (c3 == ('X'))) /* HORIZONTAL*/{
