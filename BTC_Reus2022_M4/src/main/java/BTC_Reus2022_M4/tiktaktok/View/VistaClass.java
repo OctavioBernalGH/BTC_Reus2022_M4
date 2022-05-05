@@ -13,6 +13,9 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import BTC_Reus2022_M4.tiktaktok.Class.CasillaClass;
+
 import javax.swing.JRadioButton;
 
 public class VistaClass {
@@ -59,33 +62,31 @@ public class VistaClass {
 		frame.getContentPane().setLayout(null);
 		
 		
-		JButton btn_1 = new JButton("");// Posición fila 1 columna 1
-		JButton btn_2 = new JButton("");// Posición fila 1 columna 2
-		JButton btn_3 = new JButton("");// Posición fila 1 columna 3
-		JButton btn_4 = new JButton("");// Posición fila 2 columna 1
-		JButton btn_5 = new JButton("");// Posición fila 2 columna 2
-		JButton btn_6 = new JButton("");// Posición fila 2 columna 3
-		JButton btn_7 = new JButton("");// Posición fila 3 columna 1
-		JButton btn_8 = new JButton("");// Posición fila 3 columna 2
-		JButton btn_9 = new JButton("");// Posición fila 3 columna 3
-		JButton btn_Nueva_Partida = new JButton("Nueva Partida");
-		JLabel lbl_Jugador_1 = new JLabel("Jugador 1");
-		JLabel lbl_Nombre_Jugador_1 = new JLabel("Nombre");
-		JLabel lbl_Jugador_2 = new JLabel("Jugador 2");
-		txt_Nombre_Jugador_1 = new JTextField();
-		JLabel lbl_Nombre_Jugador_2 = new JLabel("Nombre");
-		JLabel lbl_Tipo_Jugador_1 = new JLabel("Tipo:");
-		JLabel lbl_Tipo_Jugador_2 = new JLabel("Tipo:");
-		// Se añaden los radioButton referentes al jugador 1 al grupo de botones.
-		JRadioButton radio_Humano_Jugador_1 = new JRadioButton("Humano");
-		JRadioButton radio_CPU_Jugador_1 = new JRadioButton("CPU");
-		// Se añaden los radioButton referentes al jugador 2 al grupo de botones.
-		JRadioButton radio_Humano_Jugador_2 = new JRadioButton("Humano");
-		JRadioButton radio_CPU_Jugador_2 = new JRadioButton("CPU");
-		ButtonGroup grupoRadioButtonJugador1 = new ButtonGroup();// Se crea una instancia de la clase ButtonGroup para el jugador 1.
-		ButtonGroup grupoRadioButtonJugador2 = new ButtonGroup();// Se crea una instancia de la clase ButtonGroup para el jugador 2.
-		txt_Nombre_Jugador_2 = new JTextField();
-		JButton btn_Comenzar_Partida = new JButton("Comenzar Partida");
+		CasillaClass btn_1 							= new CasillaClass(1,WIDTH, HEIGHT);// Posición fila 1 columna 1
+		CasillaClass btn_2 							= new CasillaClass(2,WIDTH, HEIGHT);// Posición fila 1 columna 2
+		CasillaClass btn_3 							= new CasillaClass(3,WIDTH, HEIGHT);// Posición fila 1 columna 3
+		CasillaClass btn_4 							= new CasillaClass(4,WIDTH, HEIGHT);// Posición fila 2 columna 1
+		CasillaClass btn_5 							= new CasillaClass(5,WIDTH, HEIGHT);// Posición fila 2 columna 2
+		CasillaClass btn_6 							= new CasillaClass(6,WIDTH, HEIGHT);// Posición fila 2 columna 3
+		CasillaClass btn_7 							= new CasillaClass(7,WIDTH, HEIGHT);// Posición fila 3 columna 1
+		CasillaClass btn_8 							= new CasillaClass(8,WIDTH, HEIGHT);// Posición fila 3 columna 2
+		CasillaClass btn_9 							= new CasillaClass(9,WIDTH, HEIGHT);// Posición fila 3 columna 3
+		JButton btn_Nueva_Partida 				= new JButton("Nueva Partida");
+		JLabel lbl_Jugador_1 					= new JLabel("Jugador 1");
+		JLabel lbl_Nombre_Jugador_1 			= new JLabel("Nombre");
+		JLabel lbl_Jugador_2 					= new JLabel("Jugador 2");
+		txt_Nombre_Jugador_1 					= new JTextField();
+		JLabel lbl_Nombre_Jugador_2 			= new JLabel("Nombre");
+		JLabel lbl_Tipo_Jugador_1 				= new JLabel("Tipo:");
+		JLabel lbl_Tipo_Jugador_2 				= new JLabel("Tipo:");
+		JRadioButton radio_Humano_Jugador_1 	= new JRadioButton("Humano");// Adding radioButton  jugador 1 al grupo de botones.
+		JRadioButton radio_CPU_Jugador_1 		= new JRadioButton("CPU");
+		JRadioButton radio_Humano_Jugador_2 	= new JRadioButton("Humano");// Adding radioButton  jugador 2 al grupo de botones.
+		JRadioButton radio_CPU_Jugador_2 		= new JRadioButton("CPU");
+		ButtonGroup grupoRadioButtonJugador1 	= new ButtonGroup();// Se crea una instancia de la clase ButtonGroup para el jugador 1.
+		ButtonGroup grupoRadioButtonJugador2 	= new ButtonGroup();// Se crea una instancia de la clase ButtonGroup para el jugador 2.
+		txt_Nombre_Jugador_2 					= new JTextField();
+		JButton btn_Comenzar_Partida 			= new JButton("Comenzar Partida");
 		
 		
 //Parameterizing		

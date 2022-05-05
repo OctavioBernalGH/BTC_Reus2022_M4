@@ -10,10 +10,10 @@ public class CasillaClass extends JButton{
 	private int idCasilla = 0;
 	//Estate of the field using getter and setter
 	private char marcadoCon ='V';
-	private int width,height;
-	public Image imgEmpty = new ImageIcon(this.getClass().getResource("/img_empty.png")).getImage();
-	public Image imgX = new ImageIcon(this.getClass().getResource("/img_x.png")).getImage();
-	public Image imgY = new ImageIcon(this.getClass().getResource("/img_y.png")).getImage();
+	private int width=100,height=100;
+	public Image imgEmpty 	= new ImageIcon(this.getClass().getResource("/img/img_empty.png")).getImage();
+	public Image imgX 		= new ImageIcon(this.getClass().getResource("/img/img_x.png")).getImage();
+	public Image imgY 		= new ImageIcon(this.getClass().getResource("/img/img_y.png")).getImage();
 	public ImageIcon iconEmpty = scaleImage(imgEmpty);
 	public ImageIcon iconX = scaleImage(imgX) ;
 	public ImageIcon iconY = scaleImage(imgY);
@@ -29,13 +29,12 @@ public class CasillaClass extends JButton{
 	 * @param height		- Dimension of image Height
 	 * @param imgEmpty		- Initial image empty
 	 */
-	public CasillaClass(int idCasilla, int width, int height, ImageIcon imgEmpty) {
+	public CasillaClass(int idCasilla, int width, int height) {
 		super();
 		this.idCasilla = idCasilla;
-		this.width = width;
-		this.height = height;
-		this.iconEmpty = imgEmpty;
-		this.setIcon(imgEmpty);
+		this.width = 100;
+		this.height = 100;
+		this.setIcon(iconEmpty);
 	}
 	
 //Functions
