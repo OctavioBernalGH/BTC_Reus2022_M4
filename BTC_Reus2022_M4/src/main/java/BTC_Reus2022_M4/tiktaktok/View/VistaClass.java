@@ -10,16 +10,13 @@ package BTC_Reus2022_M4.tiktaktok.View;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JFrame;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-
-import BTC_Reus2022_M4.tiktaktok.Class.CasillaClass;
-
 import javax.swing.JRadioButton;
+import BTC_Reus2022_M4.tiktaktok.Class.CasillaClass;
 
 public class VistaClass implements ActionListener{
 
@@ -28,6 +25,16 @@ public class VistaClass implements ActionListener{
 	private JTextField txt_Nombre_Jugador_2;
 	private final int WIDTH=100;
 	private final int HEIGHT=100;
+	private CasillaClass casilla;
+	public CasillaClass btn_1;
+	public CasillaClass btn_2;
+	public CasillaClass btn_3;
+	public CasillaClass btn_4;
+	public CasillaClass btn_5;
+	public CasillaClass btn_6;
+	public CasillaClass btn_7;
+	public CasillaClass btn_8;
+	public CasillaClass btn_9;
 
 	/**
 	 * Launch the application.
@@ -63,17 +70,15 @@ public class VistaClass implements ActionListener{
 		frame.setBounds(100, 100, 640, 383);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
-		
-		CasillaClass btn_1 							= new CasillaClass(0,WIDTH, HEIGHT);// Posición fila 1 columna 1
-		CasillaClass btn_2 							= new CasillaClass(1,WIDTH, HEIGHT);// Posición fila 1 columna 2
-		CasillaClass btn_3 							= new CasillaClass(2,WIDTH, HEIGHT);// Posición fila 1 columna 3
-		CasillaClass btn_4 							= new CasillaClass(3,WIDTH, HEIGHT);// Posición fila 2 columna 1
-		CasillaClass btn_5 							= new CasillaClass(4,WIDTH, HEIGHT);// Posición fila 2 columna 2
-		CasillaClass btn_6 							= new CasillaClass(5,WIDTH, HEIGHT);// Posición fila 2 columna 3
-		CasillaClass btn_7 							= new CasillaClass(6,WIDTH, HEIGHT);// Posición fila 3 columna 1
-		CasillaClass btn_8 							= new CasillaClass(7,WIDTH, HEIGHT);// Posición fila 3 columna 2
-		CasillaClass btn_9 							= new CasillaClass(8,WIDTH, HEIGHT);// Posición fila 3 columna 3
+		btn_1 									= new CasillaClass(0,WIDTH, HEIGHT);// Posición fila 1 columna 1
+		btn_2 									= new CasillaClass(1,WIDTH, HEIGHT);// Posición fila 1 columna 2
+		btn_3 									= new CasillaClass(2,WIDTH, HEIGHT);// Posición fila 1 columna 3
+		btn_4 									= new CasillaClass(3,WIDTH, HEIGHT);// Posición fila 2 columna 1
+		btn_5 									= new CasillaClass(4,WIDTH, HEIGHT);// Posición fila 2 columna 2
+		btn_6 									= new CasillaClass(5,WIDTH, HEIGHT);// Posición fila 2 columna 3
+		btn_7 									= new CasillaClass(6,WIDTH, HEIGHT);// Posición fila 3 columna 1
+		btn_8 									= new CasillaClass(7,WIDTH, HEIGHT);// Posición fila 3 columna 2
+		btn_9 									= new CasillaClass(8,WIDTH, HEIGHT);// Posición fila 3 columna 3
 		JButton btn_Nueva_Partida 				= new JButton("Nueva Partida");
 		JLabel lbl_Jugador_1 					= new JLabel("Jugador 1");
 		JLabel lbl_Nombre_Jugador_1 			= new JLabel("Nombre");
@@ -164,39 +169,38 @@ public class VistaClass implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//Geting info from the event
+		//Getting info from the event
 			CasillaClass btnPress = (CasillaClass)e.getSource();
 				//Getting the text of the widget
 				int name = btnPress.getIdCasilla();
-				
-				//Switching the acction request
+				//Switching the action request
 				switch(name) {
 					case 0:
-						System.out.println("Boton 1 pulsado");
+						btn_1.marcadoCasilla(1);
 						break;
 					case 1:
-						
+						btn_2.marcadoCasilla(2);
 						break;
 					case 2:
-						
+						btn_3.marcadoCasilla(2);
 						break;
 					case 3:
-	
+						btn_4.marcadoCasilla(2);
 						break;
 					case 4:
-						
+						btn_5.marcadoCasilla(2);
 						break;
 					case 5:
-						
+						btn_6.marcadoCasilla(2);
 						break;
 					case 6:
-						
+						btn_7.marcadoCasilla(2);
 						break;
 					case 7:
-						
+						btn_8.marcadoCasilla(2);
 						break;
 					case 8:
-						
+						btn_9.marcadoCasilla(2);
 						break;
 	
 		
