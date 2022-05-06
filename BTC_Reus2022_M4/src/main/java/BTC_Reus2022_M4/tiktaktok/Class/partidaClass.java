@@ -31,7 +31,7 @@ public class partidaClass {
 	}
 
 	// Funcion para ver quien a ganado
-	private char comprobarGanador() {
+	public char comprobarGanador() {
 
 		char ganador = 'A';
 		// COMPROBAR GANADOR X

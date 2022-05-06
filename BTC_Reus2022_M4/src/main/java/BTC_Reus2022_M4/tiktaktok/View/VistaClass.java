@@ -14,10 +14,12 @@ import javax.swing.JFrame;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import BTC_Reus2022_M4.tiktaktok.Class.CasillaClass;
 import BTC_Reus2022_M4.tiktaktok.Class.PersonaClass;
+import BTC_Reus2022_M4.tiktaktok.Class.partidaClass;
 
 public class VistaClass implements ActionListener{
 
@@ -26,7 +28,7 @@ public class VistaClass implements ActionListener{
 	private JTextField txt_Nombre_Jugador_2;
 	private final int WIDTH=100;
 	private final int HEIGHT=100;
-	private CasillaClass casilla;
+	public CasillaClass casilla;
 	public CasillaClass btn_1;
 	public CasillaClass btn_2;
 	public CasillaClass btn_3;
@@ -36,6 +38,9 @@ public class VistaClass implements ActionListener{
 	public CasillaClass btn_7;
 	public CasillaClass btn_8;
 	public CasillaClass btn_9;
+
+	public PersonaClass jugador1;
+	public PersonaClass jugador2;
 
 	/**
 	 * Launch the application.
@@ -182,42 +187,139 @@ public class VistaClass implements ActionListener{
 		//Switching the action request
 		switch(name) {
 		case 0:
-			btn_1.marcadoCasilla(1);
+			jugada(btn_1);
 			break;
 		case 1:
-			btn_2.marcadoCasilla(2);
+			jugada(btn_2);
 			break;
 		case 2:
-			btn_3.marcadoCasilla(2);
+			jugada(btn_3);
 			break;
 		case 3:
-			btn_4.marcadoCasilla(2);
+			jugada(btn_4);
 			break;
 		case 4:
-			btn_5.marcadoCasilla(2);
+			jugada(btn_5);
 			break;
 		case 5:
-			btn_6.marcadoCasilla(2);
+			jugada(btn_6);
 			break;
 		case 6:
-			btn_7.marcadoCasilla(2);
+			jugada(btn_7);
 			break;
 		case 7:
-			btn_8.marcadoCasilla(2);
+			jugada(btn_8);
 			break;
 		case 8:
-			btn_9.marcadoCasilla(2);
+			jugada(btn_9);
 			break;
+		}
+
+	}
+
+	/**
+	 * 
+	 */
+	public void jugada(CasillaClass casillaActiva) {
+		boolean flag = false;
+		
+		quienVa();
+		if(comprobarNumeroCasillasJugador(quienVaPersonaClass())) {
+			if(comprobarFichaVacia(casillaActiva)) {
+				casillaActiva.marcadoCasilla(quienVa());
+			} else if(comprobarFichaXY(casillaActiva) == 'X'){
+				
+			} else if(comprobarFichaXY(casillaActiva) == 'Y') {
+				
+			}
+			quienVaPersonaClass().setFichasPosicionadas(quienVaPersonaClass().getFichasPosicionadas()+1); // porrolinia
+			flag = true;
+			
+		} else {			
+			// JOptionPane.showMessageDialog(casillaActiva, "Desmarca una casilla para mover");
+			if (comprobarFichaXY(casillaActiva) == quienVaPersonaClass().getFichaAsociada()) {
+				casillaActiva.setVacio();
+				quienVaPersonaClass().setFichasPosicionadas(quienVaPersonaClass().getFichasPosicionadas()-1); // porrolinia
+				
+			}
+			jugada(casillaActiva);
+		}
+		
+		if (flag) {
+			cambiarTurno();
+		}
+	}
+
+	public void nuevaPartida() {
+		jugador1 = new PersonaClass("Jugador 1", 0, 0, 'X');
+		jugador2 = new PersonaClass("Jugador 2", 0, 0, 'Y');
+		partidaClass nuevaPartida = new partidaClass();
+
+		jugador1.setEsTuTurno(true);
+
+		do {
 
 
+		} while (nuevaPartida.comprobarGanador() == 'X' || nuevaPartida.comprobarGanador() == 'Y');		
+	}
+
+	public int quienVa() {
+		if(jugador1.getEsTuTurno()) {
+			return 1; // Jugador1	
+		} else {
+			return 2; // Jugador2
+		}
+
+	}
+
+	public boolean comprobarNumeroCasillasJugador(PersonaClass jugadorN) {
+		boolean flag = false;
+		if(jugadorN.getFichasPosicionadas() < 3) {
+			flag = true;
+
+		}
+		return flag;
+	}
+
+	public PersonaClass quienVaPersonaClass() {
+		if(jugador1.getEsTuTurno()) {
+			return jugador1; // Jugador1	
+		} else {
+			return jugador2; // Jugador2
 		}
 
 	}
 	
-	public void nuevaPartida() {
-		PersonaClass jugador1 = new PersonaClass("Jugador 1", 0, 0, 'X');
-		PersonaClass jugador2 = new PersonaClass("Jugador 2", 0, 0, 'Y');
+	public boolean comprobarFichaVacia(CasillaClass casillaAComprobar) {
+		boolean flag = false;
 
+		if (casillaAComprobar.getMarcadoCon() == 'V') {
+			flag = true;
+		}
+		return flag;
+	}
 
+	// Comprueba que la casilla tenga o una X o una Y
+	public char comprobarFichaXY(CasillaClass casillaComprobar) {
+		char flag = 'A';
+
+		if (casillaComprobar.getMarcadoCon() == 'X') {
+			flag = 'X';
+		} else {
+			flag = 'Y';
+		}
+
+		return flag;
+
+	}
+	
+	public void cambiarTurno() {
+		if (jugador1.getEsTuTurno()) {
+			jugador2.setEsTuTurno(true);
+			jugador1.setEsTuTurno(false);
+		} else {
+			jugador1.setEsTuTurno(true);
+			jugador2.setEsTuTurno(false);
+		}
 	}
 }

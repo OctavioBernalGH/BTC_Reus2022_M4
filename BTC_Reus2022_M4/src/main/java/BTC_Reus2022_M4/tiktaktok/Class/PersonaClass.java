@@ -14,6 +14,7 @@ public class PersonaClass {
 	private int tipoJugador = 0;
 	private int fichasPosicionadas = 0;
 	private char fichaAsociada = 'V';
+	private boolean esTuTurno = false;
 
 	// Se define constructor de clase con todos los parámetros
 	public PersonaClass(String nombre, int tipoJugador, int fichasPosicionadas, char fichaAsociada) {
@@ -78,6 +79,14 @@ public class PersonaClass {
 	 */
 	public void setFichaAsociada(char fichaAsociada) {
 		this.fichaAsociada = fichaAsociada;
+	}
+	
+	public boolean getEsTuTurno() {
+		return esTuTurno;
+	}
+	
+	public void setEsTuTurno(boolean esTuTurno) {
+		this.esTuTurno = esTuTurno;
 	}
 
 }
