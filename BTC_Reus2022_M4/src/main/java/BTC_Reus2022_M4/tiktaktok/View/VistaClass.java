@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import BTC_Reus2022_M4.tiktaktok.Class.CasillaClass;
+import BTC_Reus2022_M4.tiktaktok.Class.PersonaClass;
 
 public class VistaClass implements ActionListener{
 
@@ -63,9 +64,9 @@ public class VistaClass implements ActionListener{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		
-		 
-//Declaration	
+
+
+		//Declaration	
 		frame = new JFrame();
 		frame.setBounds(100, 100, 640, 383);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -80,6 +81,11 @@ public class VistaClass implements ActionListener{
 		btn_8 									= new CasillaClass(7,WIDTH, HEIGHT);// Posición fila 3 columna 2
 		btn_9 									= new CasillaClass(8,WIDTH, HEIGHT);// Posición fila 3 columna 3
 		JButton btn_Nueva_Partida 				= new JButton("Nueva Partida");
+		btn_Nueva_Partida.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				nuevaPartida();
+			}
+		});
 		JLabel lbl_Jugador_1 					= new JLabel("Jugador 1");
 		JLabel lbl_Nombre_Jugador_1 			= new JLabel("Nombre");
 		JLabel lbl_Jugador_2 					= new JLabel("Jugador 2");
@@ -95,9 +101,9 @@ public class VistaClass implements ActionListener{
 		ButtonGroup grupoRadioButtonJugador2 	= new ButtonGroup();// Se crea una instancia de la clase ButtonGroup para el jugador 2.
 		txt_Nombre_Jugador_2 					= new JTextField();
 		JButton btn_Comenzar_Partida 			= new JButton("Comenzar Partida");
-		
-		
-//Parameterizing		
+
+
+		//Parameterizing		
 		btn_1.setBounds(10, 10, WIDTH, HEIGHT);
 		btn_2.setBounds(120, 10, WIDTH, HEIGHT);
 		btn_3.setBounds(230, 10, WIDTH, HEIGHT);
@@ -123,8 +129,8 @@ public class VistaClass implements ActionListener{
 		radio_Humano_Jugador_2.setBounds(455, 210, 75, 23);
 		radio_CPU_Jugador_2.setBounds(532, 210, 74, 23);
 		btn_Comenzar_Partida.setBounds(420, 286, 137, 23);
-		
-//ActionListeners
+
+		//ActionListeners
 		btn_1.addActionListener(this);
 		btn_2.addActionListener(this);
 		btn_3.addActionListener(this);
@@ -134,9 +140,9 @@ public class VistaClass implements ActionListener{
 		btn_7.addActionListener(this);
 		btn_8.addActionListener(this);
 		btn_9.addActionListener(this);
-	
-		
-//Adding to content Panel the components
+
+
+		//Adding to content Panel the components
 		grupoRadioButtonJugador1.add(radio_Humano_Jugador_1);
 		grupoRadioButtonJugador1.add(radio_CPU_Jugador_1);
 		grupoRadioButtonJugador2.add(radio_Humano_Jugador_2);
@@ -164,46 +170,54 @@ public class VistaClass implements ActionListener{
 		frame.getContentPane().add(btn_3);
 		frame.getContentPane().add(btn_2);
 		frame.getContentPane().add(btn_1);
-		
+
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//Getting info from the event
-			CasillaClass btnPress = (CasillaClass)e.getSource();
-				//Getting the text of the widget
-				int name = btnPress.getIdCasilla();
-				//Switching the action request
-				switch(name) {
-					case 0:
-						btn_1.marcadoCasilla(1);
-						break;
-					case 1:
-						btn_2.marcadoCasilla(2);
-						break;
-					case 2:
-						btn_3.marcadoCasilla(2);
-						break;
-					case 3:
-						btn_4.marcadoCasilla(2);
-						break;
-					case 4:
-						btn_5.marcadoCasilla(2);
-						break;
-					case 5:
-						btn_6.marcadoCasilla(2);
-						break;
-					case 6:
-						btn_7.marcadoCasilla(2);
-						break;
-					case 7:
-						btn_8.marcadoCasilla(2);
-						break;
-					case 8:
-						btn_9.marcadoCasilla(2);
-						break;
-	
-		
+		CasillaClass btnPress = (CasillaClass)e.getSource();
+		//Getting the text of the widget
+		int name = btnPress.getIdCasilla();
+		//Switching the action request
+		switch(name) {
+		case 0:
+			btn_1.marcadoCasilla(1);
+			break;
+		case 1:
+			btn_2.marcadoCasilla(2);
+			break;
+		case 2:
+			btn_3.marcadoCasilla(2);
+			break;
+		case 3:
+			btn_4.marcadoCasilla(2);
+			break;
+		case 4:
+			btn_5.marcadoCasilla(2);
+			break;
+		case 5:
+			btn_6.marcadoCasilla(2);
+			break;
+		case 6:
+			btn_7.marcadoCasilla(2);
+			break;
+		case 7:
+			btn_8.marcadoCasilla(2);
+			break;
+		case 8:
+			btn_9.marcadoCasilla(2);
+			break;
+
+
+		}
+
 	}
-}
+	
+	public void nuevaPartida() {
+		PersonaClass jugador1 = new PersonaClass("Jugador 1", 0, 0, 'X');
+		PersonaClass jugador2 = new PersonaClass("Jugador 2", 0, 0, 'Y');
+
+
+	}
 }
