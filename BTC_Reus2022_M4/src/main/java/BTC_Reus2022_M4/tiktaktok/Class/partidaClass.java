@@ -74,6 +74,32 @@ public class partidaClass {
 		return ganador;
 	}
 
+	public int getContadorTurnos() {
+		return contadorTurnos;
+	}
+
+	public void setContadorTurnos(int contadorTurnos) {
+		this.contadorTurnos = contadorTurnos;
+	}
+
+	public int getTurno() {
+		return turno;
+	}
+
+	public void setTurno(int turno) {
+		this.turno = turno;
+	}
+
+	public int getGanador() {
+		return ganador;
+	}
+
+	public void setGanador(int ganador) {
+		this.ganador = ganador;
+	}
+
+	
+	
 }
 
 

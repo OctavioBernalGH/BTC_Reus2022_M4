@@ -41,6 +41,7 @@ public class VistaClass implements ActionListener{
 
 	public PersonaClass jugador1;
 	public PersonaClass jugador2;
+	public partidaClass partidaActiva;
 
 	/**
 	 * Launch the application.
@@ -69,7 +70,7 @@ public class VistaClass implements ActionListener{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-
+		nuevaPartida();
 
 		//Declaration	
 		frame = new JFrame();
@@ -223,44 +224,77 @@ public class VistaClass implements ActionListener{
 	public void jugada(CasillaClass casillaActiva) {
 		boolean flag = false;
 		
-		quienVa();
-		if(comprobarNumeroCasillasJugador(quienVaPersonaClass())) {
-			if(comprobarFichaVacia(casillaActiva)) {
+		
+		
+		if(quienVaPersonaClass().getFichasPosicionadas()<3) {
+			if(casillaActiva.getMarcadoCon()=='V') {
 				casillaActiva.marcadoCasilla(quienVa());
-			} else if(comprobarFichaXY(casillaActiva) == 'X'){
-				
-			} else if(comprobarFichaXY(casillaActiva) == 'Y') {
-				
+				quienVaPersonaClass().setFichasPosicionadas(quienVaPersonaClass().getFichasPosicionadas()+1);
+				partidaActiva.setContadorTurnos(partidaActiva.getContadorTurnos()+1);
+				flag = true;
 			}
-			quienVaPersonaClass().setFichasPosicionadas(quienVaPersonaClass().getFichasPosicionadas()+1); // porrolinia
-			flag = true;
+		}else {
+			System.out.println("casilla"+casillaActiva.getMarcadoCon());
+			System.out.println("jugador"+quienVaPersonaClass().getFichaAsociada());
+			if(casillaActiva.getMarcadoCon()==quienVaPersonaClass().getFichaAsociada()) {
+				casillaActiva.setVacio();
+				System.out.println("Vaciar");
+				quienVaPersonaClass().setFichasPosicionadas(quienVaPersonaClass().getFichasPosicionadas()-1); 
+				partidaActiva.setContadorTurnos(partidaActiva.getContadorTurnos()-1);
+			}
+		}
+		System.out.println("_________________________________________");
+		System.out.println("Turno de:"+quienVaPersonaClass().getNombre());
+		System.out.println("Numero de turno:"+partidaActiva.getContadorTurnos());
+		System.out.println("Fichas posicionadas"+quienVaPersonaClass().getFichasPosicionadas());
+		System.out.println("Ficha marcada con:"+ casillaActiva.getMarcadoCon());
+		System.out.println("flag:"+ flag);
+		System.out.println("_________________________________________");
+		if(flag=true) {
+			cambiarTurno();
+		}
+	
+		
+		/*if(comprobarNumeroCasillasJugador(quienVaPersonaClass())) {
+			
+			}
+			if(comprobarFichaXY(casillaActiva)=='X') {
+				System.out.println("Ya tiene una x");
+				
+			}else if(comprobarFichaVacia(casillaActiva)) {
+				casillaActiva.marcadoCasilla(quienVa());
+				quienVaPersonaClass().setFichasPosicionadas(quienVaPersonaClass().getFichasPosicionadas()+1); 
+				flag=true;
+			
+			System.out.println("if1"+flag);
 			
 		} else {			
 			// JOptionPane.showMessageDialog(casillaActiva, "Desmarca una casilla para mover");
 			if (comprobarFichaXY(casillaActiva) == quienVaPersonaClass().getFichaAsociada()) {
 				casillaActiva.setVacio();
 				quienVaPersonaClass().setFichasPosicionadas(quienVaPersonaClass().getFichasPosicionadas()-1); // porrolinia
-				
+				System.out.println("if2"+flag);
+				casillaActiva.setMarcadoCon('V');
 			}
-			jugada(casillaActiva);
+			
 		}
 		
 		if (flag) {
 			cambiarTurno();
-		}
+		}*/
 	}
 
 	public void nuevaPartida() {
 		jugador1 = new PersonaClass("Jugador 1", 0, 0, 'X');
 		jugador2 = new PersonaClass("Jugador 2", 0, 0, 'Y');
-		partidaClass nuevaPartida = new partidaClass();
+		partidaActiva = new partidaClass();
 
 		jugador1.setEsTuTurno(true);
 
 		do {
 
 
-		} while (nuevaPartida.comprobarGanador() == 'X' || nuevaPartida.comprobarGanador() == 'Y');		
+		} while (partidaActiva.comprobarGanador() == 'X' || partidaActiva.comprobarGanador() == 'Y');		
 	}
 
 	public int quienVa() {
