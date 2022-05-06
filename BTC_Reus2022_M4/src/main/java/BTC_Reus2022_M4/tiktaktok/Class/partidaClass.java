@@ -10,64 +10,95 @@ import java.util.Iterator;
  * @date 05/05/2022
  */
 
-public class partidaClass {
-
-	
+public class partidaClass {	
 	private char c1 = 'V', c2 = 'V', c3 = 'V' ,c4 = 'V' ,c5 = 'V', c6 = 'V', c7 = 'V', c8 = 'V', c9 = 'V';	
 	private int contadorTurnos = 0;
 	private int turno = 0; 
 	private int ganador = 0;
 
+	private void turnosPartida() {
+		
+	}	
+	
 	// Funcion para el boton de reiniciar
 	private void reiniciarPartida() {
-		
+
 	}
-	
+
 	// Funcion para contar las fichas de cada jugador
 	private void comprobarCantidadFichas() {
-		
+
 	}
-	
+
 	// Funcion para ver quien a ganado
-	private void comprobarGanador() {	
+	public char comprobarGanador() {
+
+		char ganador = 'A';
 		// COMPROBAR GANADOR X
 		if ((c1 == ('X')) && (c2 == ('X')) && (c3 == ('X'))) /* HORIZONTAL*/{
-			reiniciarPartida();
+			ganador = 'X';
 		} else if ((c4 == ('X')) && (c5 == ('X')) && (c6 == ('X'))) {
-			reiniciarPartida();
+			ganador = 'X';
 		} else if ((c7 == ('X')) && (c8 == ('X')) && (c9 == ('X'))) {			
-			reiniciarPartida();
+			ganador = 'X';
 		} else if ((c1 == ('X')) && (c4 == ('X')) && (c7 == ('X'))) /* VERTICAL*/{
-			reiniciarPartida();
+			ganador = 'X';
 		} else if ((c2 == ('X')) && (c5 == ('X')) && (c8 == ('X'))) {
-			reiniciarPartida();
+			ganador = 'X';
 		} else if ((c3 == ('X')) && (c6 == ('X')) && (c9 == ('X'))) {
-			reiniciarPartida();
+			ganador = 'X';
 		} else if ((c1 == ('X')) && (c5 == ('X')) && (c9 == ('X'))) /* DIAGONAL*/{
-			reiniciarPartida();
+			ganador = 'X';
 		} else if ((c3 == ('X')) && (c5 == ('X')) && (c7 == ('X'))) {
-			reiniciarPartida();
+			ganador = 'X';
 		}
-		
+
 		// COMPROBAR GANADOR Y
 		if ((c1 == ('Y')) && (c2 == ('Y')) && (c3 == ('Y'))) /* HORIZONTAL*/{
-			reiniciarPartida();
+			ganador = 'Y';
 		} else if ((c4 == ('Y')) && (c5 == ('Y')) && (c6 == ('Y'))) {
-			reiniciarPartida();
+			ganador = 'Y';
 		} else if ((c7 == ('Y')) && (c8 == ('Y')) && (c9 == ('Y'))) {			
-			reiniciarPartida();
+			ganador = 'Y';
 		} else if ((c1 == ('Y')) && (c4 == ('Y')) && (c7 == ('Y'))) /* VERTICAL*/{
-			reiniciarPartida();
+			ganador = 'Y';
 		} else if ((c2 == ('Y')) && (c5 == ('Y')) && (c8 == ('Y'))) {
-			reiniciarPartida();
+			ganador = 'Y';
 		} else if ((c3 == ('Y')) && (c6 == ('Y')) && (c9 == ('Y'))) {
-			reiniciarPartida();
+			ganador = 'Y';
 		} else if ((c1 == ('Y')) && (c5 == ('Y')) && (c9 == ('Y'))) /* DIAGONAL*/{
-			reiniciarPartida();
+			ganador = 'Y';
 		} else if ((c3 == ('Y')) && (c5 == ('Y')) && (c7 == ('Y'))) {
-			reiniciarPartida();
+			ganador = 'Y';
 		}
+		return ganador;
 	}
+
+	public int getContadorTurnos() {
+		return contadorTurnos;
+	}
+
+	public void setContadorTurnos(int contadorTurnos) {
+		this.contadorTurnos = contadorTurnos;
+	}
+
+	public int getTurno() {
+		return turno;
+	}
+
+	public void setTurno(int turno) {
+		this.turno = turno;
+	}
+
+	public int getGanador() {
+		return ganador;
+	}
+
+	public void setGanador(int ganador) {
+		this.ganador = ganador;
+	}
+
+	
 	
 }
 

@@ -29,6 +29,7 @@ public class CasillaClass extends JButton{
 	 * @param height		- Dimension of image Height
 	 * @param imgEmpty		- Initial image empty
 	 */
+	
 	public CasillaClass(int idCasilla, int width, int height) {
 		super();
 		this.idCasilla = idCasilla;
@@ -49,13 +50,17 @@ public class CasillaClass extends JButton{
 			case 2:
 				this.setIcon(iconY);
 				this.marcadoCon = 'Y';
-				break;
-				
+				break;	
+			case 3:
+			this.setIcon(iconEmpty);
+			this.marcadoCon = 'V';
+			break;
 		}
 	}
 	//Change to empty
 	public void setVacio() {
 		this.setIcon(iconEmpty);
+		this.marcadoCon = 'V';
 	}
 	
 	/**
