@@ -238,11 +238,15 @@ public class VistaClass implements ActionListener{
 		} else {			
 			// JOptionPane.showMessageDialog(casillaActiva, "Desmarca una casilla para mover");
 			if (comprobarFichaXY(casillaActiva) == quienVaPersonaClass().getFichaAsociada()) {
-				casillaActiva.setVacio();
+				//casillaActiva.setVacio();
+				casillaActiva.marcadoCasilla(3);
 				quienVaPersonaClass().setFichasPosicionadas(quienVaPersonaClass().getFichasPosicionadas()-1); // porrolinia
-				
+				if (comprobarFichaVacia(casillaActiva)) {
+					casillaActiva.marcadoCasilla(quienVa());
+					quienVaPersonaClass().setFichasPosicionadas(quienVaPersonaClass().getFichasPosicionadas()+1); // porrolinia
+					flag = true;
+				}
 			}
-			jugada(casillaActiva);
 		}
 		
 		if (flag) {
