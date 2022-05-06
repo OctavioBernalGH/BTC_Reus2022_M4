@@ -223,7 +223,7 @@ public class VistaClass implements ActionListener{
 	public void jugada(CasillaClass casillaActiva) {
 		boolean flag = false;
 		
-		quienVa();
+		quienVaPersonaClass();
 		if(comprobarNumeroCasillasJugador(quienVaPersonaClass())) {
 			if(comprobarFichaVacia(casillaActiva)) {
 				casillaActiva.marcadoCasilla(quienVa());
@@ -238,8 +238,7 @@ public class VistaClass implements ActionListener{
 		} else {			
 			// JOptionPane.showMessageDialog(casillaActiva, "Desmarca una casilla para mover");
 			if (comprobarFichaXY(casillaActiva) == quienVaPersonaClass().getFichaAsociada()) {
-				//casillaActiva.setVacio();
-				casillaActiva.marcadoCasilla(3);
+				casillaActiva.setVacio();
 				quienVaPersonaClass().setFichasPosicionadas(quienVaPersonaClass().getFichasPosicionadas()-1); // porrolinia
 				if (comprobarFichaVacia(casillaActiva)) {
 					casillaActiva.marcadoCasilla(quienVa());
