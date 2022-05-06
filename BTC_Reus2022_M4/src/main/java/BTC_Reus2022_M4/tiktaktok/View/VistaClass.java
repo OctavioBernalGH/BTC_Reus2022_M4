@@ -253,35 +253,6 @@ public class VistaClass implements ActionListener{
 		if(flag=true) {
 			cambiarTurno();
 		}
-	
-		
-		/*if(comprobarNumeroCasillasJugador(quienVaPersonaClass())) {
-			
-			}
-			if(comprobarFichaXY(casillaActiva)=='X') {
-				System.out.println("Ya tiene una x");
-				
-			}else if(comprobarFichaVacia(casillaActiva)) {
-				casillaActiva.marcadoCasilla(quienVa());
-				quienVaPersonaClass().setFichasPosicionadas(quienVaPersonaClass().getFichasPosicionadas()+1); 
-				flag=true;
-			
-			System.out.println("if1"+flag);
-			
-		} else {			
-			// JOptionPane.showMessageDialog(casillaActiva, "Desmarca una casilla para mover");
-			if (comprobarFichaXY(casillaActiva) == quienVaPersonaClass().getFichaAsociada()) {
-				casillaActiva.setVacio();
-				quienVaPersonaClass().setFichasPosicionadas(quienVaPersonaClass().getFichasPosicionadas()-1); // porrolinia
-				System.out.println("if2"+flag);
-				casillaActiva.setMarcadoCon('V');
-			}
-			
-		}
-		
-		if (flag) {
-			cambiarTurno();
-		}*/
 	}
 
 	public void nuevaPartida() {
