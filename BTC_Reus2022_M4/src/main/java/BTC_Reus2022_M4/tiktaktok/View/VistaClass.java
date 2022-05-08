@@ -76,7 +76,7 @@ public class VistaClass implements ActionListener{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		nuevaPartida();
+		
 
 		//Declaration	
 		frame = new JFrame();
@@ -92,6 +92,9 @@ public class VistaClass implements ActionListener{
 		btn_7 									= new CasillaClass(6,WIDTH, HEIGHT);// Posición fila 3 columna 1
 		btn_8 									= new CasillaClass(7,WIDTH, HEIGHT);// Posición fila 3 columna 2
 		btn_9 									= new CasillaClass(8,WIDTH, HEIGHT);// Posición fila 3 columna 3
+		asignarCasillaAList();
+		nuevaPartida();
+		
 		JButton btn_Nueva_Partida 				= new JButton("Nueva Partida");
 		btn_Nueva_Partida.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -266,7 +269,7 @@ public class VistaClass implements ActionListener{
 		partidaActiva = new partidaClass();
 
 		jugador1.setEsTuTurno(true);
-
+		System.out.println("TAMANYO ARRAY "+ listCasillas.size());
 		do {
 
 		} while (partidaClass.asignarValoresAChars(listCasillas));		
@@ -274,15 +277,15 @@ public class VistaClass implements ActionListener{
 
 	// Asignamos los valores de la lista a cada boton
 	public void asignarCasillaAList() {
-		listCasillas.set(0, btn_1);
-		listCasillas.set(1, btn_2);
-		listCasillas.set(2, btn_3);
-		listCasillas.set(3, btn_4);
-		listCasillas.set(4, btn_5);
-		listCasillas.set(5, btn_6);
-		listCasillas.set(6, btn_7);
-		listCasillas.set(7, btn_8);
-		listCasillas.set(8, btn_9);
+		listCasillas.add(btn_1);
+		listCasillas.add(btn_2);
+		listCasillas.add(btn_3);
+		listCasillas.add(btn_4);
+		listCasillas.add(btn_5);
+		listCasillas.add(btn_6);
+		listCasillas.add(btn_7);
+		listCasillas.add(btn_8);
+		listCasillas.add(btn_9);
 		
 	}
 	
