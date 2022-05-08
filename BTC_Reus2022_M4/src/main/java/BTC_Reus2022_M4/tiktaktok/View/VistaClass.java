@@ -10,18 +10,24 @@ package BTC_Reus2022_M4.tiktaktok.View;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import javax.swing.JFrame;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
 import javax.swing.JRadioButton;
 import BTC_Reus2022_M4.tiktaktok.Class.CasillaClass;
 import BTC_Reus2022_M4.tiktaktok.Class.PersonaClass;
 import BTC_Reus2022_M4.tiktaktok.Class.partidaClass;
 
 public class VistaClass implements ActionListener{
+	
+	public Random rand = new Random();
 
 	private JFrame frame;
 	private JTextField txt_Nombre_Jugador_1;
@@ -38,10 +44,15 @@ public class VistaClass implements ActionListener{
 	public CasillaClass btn_7;
 	public CasillaClass btn_8;
 	public CasillaClass btn_9;
+	public List<CasillaClass> listCasillas = new ArrayList<CasillaClass>();
 
 	public PersonaClass jugador1;
 	public PersonaClass jugador2;
 	public partidaClass partidaActiva;
+	int fichasPlayer1	=0;
+	int fichasPlayer2	=0;
+	int fichasCPU1		=0;
+	int fichasCPU2		=0;
 
 	/**
 	 * Launch the application.
@@ -74,9 +85,7 @@ public class VistaClass implements ActionListener{
 
 		//Declaration	
 		frame = new JFrame();
-		frame.setBounds(100, 100, 640, 383);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		
 		btn_1 									= new CasillaClass(0,WIDTH, HEIGHT);// Posición fila 1 columna 1
 		btn_2 									= new CasillaClass(1,WIDTH, HEIGHT);// Posición fila 1 columna 2
 		btn_3 									= new CasillaClass(2,WIDTH, HEIGHT);// Posición fila 1 columna 3
@@ -87,15 +96,9 @@ public class VistaClass implements ActionListener{
 		btn_8 									= new CasillaClass(7,WIDTH, HEIGHT);// Posición fila 3 columna 2
 		btn_9 									= new CasillaClass(8,WIDTH, HEIGHT);// Posición fila 3 columna 3
 		JButton btn_Nueva_Partida 				= new JButton("Nueva Partida");
-		btn_Nueva_Partida.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				nuevaPartida();
-			}
-		});
 		JLabel lbl_Jugador_1 					= new JLabel("Jugador 1");
 		JLabel lbl_Nombre_Jugador_1 			= new JLabel("Nombre");
 		JLabel lbl_Jugador_2 					= new JLabel("Jugador 2");
-		txt_Nombre_Jugador_1 					= new JTextField();
 		JLabel lbl_Nombre_Jugador_2 			= new JLabel("Nombre");
 		JLabel lbl_Tipo_Jugador_1 				= new JLabel("Tipo:");
 		JLabel lbl_Tipo_Jugador_2 				= new JLabel("Tipo:");
@@ -105,11 +108,34 @@ public class VistaClass implements ActionListener{
 		JRadioButton radio_CPU_Jugador_2 		= new JRadioButton("CPU");
 		ButtonGroup grupoRadioButtonJugador1 	= new ButtonGroup();// Se crea una instancia de la clase ButtonGroup para el jugador 1.
 		ButtonGroup grupoRadioButtonJugador2 	= new ButtonGroup();// Se crea una instancia de la clase ButtonGroup para el jugador 2.
+		txt_Nombre_Jugador_1 					= new JTextField();
 		txt_Nombre_Jugador_2 					= new JTextField();
 		JButton btn_Comenzar_Partida 			= new JButton("Comenzar Partida");
+		
+		//Adding all "Casillas" to list
+		listCasillas.add(btn_1);
+		listCasillas.add(btn_2);
+		listCasillas.add(btn_3);
+		listCasillas.add(btn_4);
+		listCasillas.add(btn_5);
+		listCasillas.add(btn_6);
+		listCasillas.add(btn_7);
+		listCasillas.add(btn_8);
+		listCasillas.add(btn_9);
+		
 
+//Action Listener
+		
+		btn_Nueva_Partida.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				nuevaPartida();
+			}
+		});
 
-		//Parameterizing		
+//Parameterizing	
+		frame.setBounds(100, 100, 640, 383);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
 		btn_1.setBounds(10, 10, WIDTH, HEIGHT);
 		btn_2.setBounds(120, 10, WIDTH, HEIGHT);
 		btn_3.setBounds(230, 10, WIDTH, HEIGHT);
@@ -178,7 +204,7 @@ public class VistaClass implements ActionListener{
 		frame.getContentPane().add(btn_1);
 
 	}
-
+	//Method overrided to catch the click button
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//Getting info from the event
@@ -222,44 +248,134 @@ public class VistaClass implements ActionListener{
 	 * 
 	 */
 	public void jugada(CasillaClass casillaActiva) {
-		boolean flag = false;
-		
-		
-		
-		if(quienVaPersonaClass().getFichasPosicionadas()<3) {
-			if(casillaActiva.getMarcadoCon()=='V') {
-				casillaActiva.marcadoCasilla(quienVa());
-				quienVaPersonaClass().setFichasPosicionadas(quienVaPersonaClass().getFichasPosicionadas()+1);
-				partidaActiva.setContadorTurnos(partidaActiva.getContadorTurnos()+1);
-				flag = true;
-			}
-		}else {
-			System.out.println("casilla"+casillaActiva.getMarcadoCon());
-			System.out.println("jugador"+quienVaPersonaClass().getFichaAsociada());
-			if(casillaActiva.getMarcadoCon()==quienVaPersonaClass().getFichaAsociada()) {
-				casillaActiva.setVacio();
-				System.out.println("Vaciar");
-				quienVaPersonaClass().setFichasPosicionadas(quienVaPersonaClass().getFichasPosicionadas()-1); 
-				partidaActiva.setContadorTurnos(partidaActiva.getContadorTurnos()-1);
+		//Switch para determinar el jugador
+		switch(quienVa()) {
+			case 1: //Player 1
+				System.out.println("*********** JUGADOR1  ***********");
+				turno(casillaActiva, 'X', fichasPlayer1);
+				//TODO: SI JUGADOR 1 ES ROBOT JUGADA RANDDOM
+				System.out.println("Tipo jugador 1: "+jugador1.getTipoJugador());
+				if(jugador2.getTipoJugador()==1) {
+					turnoCPU('Y', fichasCPU2);
+				}
+				break;
+			case 2:
+				System.out.println("*********** JUGADOR2  ***********");
+				System.out.println("Tipo jugador 2: "+jugador2.getTipoJugador());
+				
+				if(jugador2.getTipoJugador()==1) {
+					//Generating a random choose of field
+					int casillaRandom = (int)Math.floor(Math.random()*(8-0+1)+0);
+					System.out.println("Casilla random= "+casillaRandom);
+					turno(listCasillas.get(casillaRandom), 'Y', fichasPlayer1);
+				}else {
+					turno(casillaActiva, 'Y', fichasPlayer2);
+				}
+				break;
+		}
+	}	
+	public void turnoCPU(char valorFicha, int fichasPlayer) {
+		System.out.println("*********** CPU  ***********");
+		//Generating random field
+		int numRandom = rand.nextInt(9); //cod:001
+		//Casilla vacia?
+		if(casillaRandomVacia(numRandom)) { //cod:002
+				//CPU -3 FICHAS
+				if(fichasPlayer<3) { //cod:003
+					//Posicionar ficha
+					setCasillaYCambioTurno(numRandom);
+				//CPU +3 FICHAS
+				}else {
+					//Buscamos una casilla vacia
+					do {//cod:006
+						numRandom = rand.nextInt(9);
+					}while(casillaLlena(numRandom));
+					//comprobar que casilla tenga el valor de la cpu
+					if(listCasillas.get(numRandom).getMarcadoCon()==valorFicha) {//cod:007
+						//TODO:VaciarCasilla
+						//TODO:Marcar otra casilla vacia
+						//TODO:cambio turno
+					}
+				}
+				setFichaMenor3(fichasPlayer, numRandom);
+		//Casilla no vacia
+		}else { // cod:005
+			//DOWHILE CASILLA NO VACIA
+			numRandom = rand.nextInt(9);
+			if(casillaRandomVacia(numRandom)) { //cod:002
+				if(fichasPlayer<3) {
+					setCasillaYCambioTurno(numRandom); //cod:fin
+				}
 			}
 		}
-		System.out.println("_________________________________________");
-		System.out.println("Turno de:"+quienVaPersonaClass().getNombre());
-		System.out.println("Numero de turno:"+partidaActiva.getContadorTurnos());
-		System.out.println("Fichas posicionadas"+quienVaPersonaClass().getFichasPosicionadas());
-		System.out.println("Ficha marcada con:"+ casillaActiva.getMarcadoCon());
-		System.out.println("flag:"+ flag);
-		System.out.println("_________________________________________");
-		if(flag=true) {
-			cambiarTurno();
+	}
+	//Funcion para saber si la casilla esta llena
+	private Boolean casillaLlena(int numRandom) {
+		boolean flag = false;
+		if(!casillaRandomVacia(numRandom)) {
+			flag = true;
+		}
+		return flag;
+	}
+
+	private void setCasillaYCambioTurno(int numRandom) {
+		listCasillas.get(numRandom).marcadoCasilla(quienVa());
+		fichasCPU1++;
+		//System.out.println("Cambio Turno");
+		cambiarTurno();
+	}
+	//Comprueba que la cpu tenga menos de 3 fichas y marca ficha
+	private void setFichaMenor3(int fichasPlayer, int numRandom) {
+		System.out.println("Casilla CPU VACIA");
+		//Jugador tiene menos de 3 fichas
+		if(fichasPlayer<3) {
+				System.out.println("Jugador tiene menos de 3 fichas");
+		//SetFicha y cambiar turno
+				listCasillas.get(numRandom).marcadoCasilla(quienVa());
+				fichasCPU1++;
+				System.out.println("Cambio Turno");
+				cambiarTurno();
 		}
 	}
 
+	private boolean casillaRandomVacia(int numRandom) {
+		return listCasillas.get(numRandom).getMarcadoCon()=='V';
+	}
+	public void turno(CasillaClass casillaActiva, char valorFicha, int fichasPlayer) {
+		
+		if(casillaActiva.getMarcadoCon()=='V') { //Casilla vacia
+			if(fichasPlayer<3) {//Jugador tiene menos de 3 fichas
+				System.out.println("Jugador tiene menos de 3 fichas");
+				//Todo setFicha y cambiar turno
+				casillaActiva.marcadoCasilla(quienVa());
+				if(valorFicha=='X') {
+					fichasPlayer1++;
+				}else {
+					fichasPlayer2++;
+				}
+				System.out.println("Cambio Turno");
+				cambiarTurno();
+			}
+		}else {//Esta marcada con x o Y
+			if(fichasPlayer==3) {//Si el jugador tiene 3 en el tablero
+				System.out.println("Jugador tiene 3 fichas");
+				if(casillaActiva.getMarcadoCon()==valorFicha) {
+					casillaActiva.setVacio();
+					if(valorFicha=='X') {
+						fichasPlayer1--;
+						
+					}else {
+						fichasPlayer2--;
+					}
+				}
+			}
+		}
+	}
 	public void nuevaPartida() {
 		jugador1 = new PersonaClass("Jugador 1", 0, 0, 'X');
 		jugador2 = new PersonaClass("Jugador 2", 0, 0, 'Y');
 		partidaActiva = new partidaClass();
-
+		//Setting jugador1 as first player
 		jugador1.setEsTuTurno(true);
 
 		do {
@@ -317,7 +433,7 @@ public class VistaClass implements ActionListener{
 		return flag;
 
 	}
-	
+	//Changing turn of player
 	public void cambiarTurno() {
 		if (jugador1.getEsTuTurno()) {
 			jugador2.setEsTuTurno(true);
