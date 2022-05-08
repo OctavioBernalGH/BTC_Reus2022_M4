@@ -42,6 +42,8 @@ public class VistaClass implements ActionListener{
 	public PersonaClass jugador1;
 	public PersonaClass jugador2;
 	public partidaClass partidaActiva;
+	int fichasPlayer1=0;
+	int fichasPlayer2=0;
 
 	/**
 	 * Launch the application.
@@ -74,9 +76,7 @@ public class VistaClass implements ActionListener{
 
 		//Declaration	
 		frame = new JFrame();
-		frame.setBounds(100, 100, 640, 383);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		
 		btn_1 									= new CasillaClass(0,WIDTH, HEIGHT);// Posición fila 1 columna 1
 		btn_2 									= new CasillaClass(1,WIDTH, HEIGHT);// Posición fila 1 columna 2
 		btn_3 									= new CasillaClass(2,WIDTH, HEIGHT);// Posición fila 1 columna 3
@@ -87,15 +87,9 @@ public class VistaClass implements ActionListener{
 		btn_8 									= new CasillaClass(7,WIDTH, HEIGHT);// Posición fila 3 columna 2
 		btn_9 									= new CasillaClass(8,WIDTH, HEIGHT);// Posición fila 3 columna 3
 		JButton btn_Nueva_Partida 				= new JButton("Nueva Partida");
-		btn_Nueva_Partida.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				nuevaPartida();
-			}
-		});
 		JLabel lbl_Jugador_1 					= new JLabel("Jugador 1");
 		JLabel lbl_Nombre_Jugador_1 			= new JLabel("Nombre");
 		JLabel lbl_Jugador_2 					= new JLabel("Jugador 2");
-		txt_Nombre_Jugador_1 					= new JTextField();
 		JLabel lbl_Nombre_Jugador_2 			= new JLabel("Nombre");
 		JLabel lbl_Tipo_Jugador_1 				= new JLabel("Tipo:");
 		JLabel lbl_Tipo_Jugador_2 				= new JLabel("Tipo:");
@@ -105,11 +99,22 @@ public class VistaClass implements ActionListener{
 		JRadioButton radio_CPU_Jugador_2 		= new JRadioButton("CPU");
 		ButtonGroup grupoRadioButtonJugador1 	= new ButtonGroup();// Se crea una instancia de la clase ButtonGroup para el jugador 1.
 		ButtonGroup grupoRadioButtonJugador2 	= new ButtonGroup();// Se crea una instancia de la clase ButtonGroup para el jugador 2.
+		txt_Nombre_Jugador_1 					= new JTextField();
 		txt_Nombre_Jugador_2 					= new JTextField();
 		JButton btn_Comenzar_Partida 			= new JButton("Comenzar Partida");
 
+//Action Listener
+		
+		btn_Nueva_Partida.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				nuevaPartida();
+			}
+		});
 
-		//Parameterizing		
+		//Parameterizing	
+		frame.setBounds(100, 100, 640, 383);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
 		btn_1.setBounds(10, 10, WIDTH, HEIGHT);
 		btn_2.setBounds(120, 10, WIDTH, HEIGHT);
 		btn_3.setBounds(230, 10, WIDTH, HEIGHT);
@@ -222,39 +227,43 @@ public class VistaClass implements ActionListener{
 	 * 
 	 */
 	public void jugada(CasillaClass casillaActiva) {
-		boolean flag = false;
-		
-		
-		
-		if(quienVaPersonaClass().getFichasPosicionadas()<3) {
-			if(casillaActiva.getMarcadoCon()=='V') {
-				casillaActiva.marcadoCasilla(quienVa());
-				quienVaPersonaClass().setFichasPosicionadas(quienVaPersonaClass().getFichasPosicionadas()+1);
-				partidaActiva.setContadorTurnos(partidaActiva.getContadorTurnos()+1);
-				flag = true;
-			}
-		}else {
-			System.out.println("casilla"+casillaActiva.getMarcadoCon());
-			System.out.println("jugador"+quienVaPersonaClass().getFichaAsociada());
-			if(casillaActiva.getMarcadoCon()==quienVaPersonaClass().getFichaAsociada()) {
-				casillaActiva.setVacio();
-				System.out.println("Vaciar");
-				quienVaPersonaClass().setFichasPosicionadas(quienVaPersonaClass().getFichasPosicionadas()-1); 
-				partidaActiva.setContadorTurnos(partidaActiva.getContadorTurnos()-1);
-			}
+		//Switch para determinar el jugador
+		switch(quienVa()) {
+			case 1: //Player 1
+				turno(casillaActiva, 'X', fichasPlayer1);
+				break;
+			case 2:
+				turno(casillaActiva, 'Y', fichasPlayer2);
+				break;
 		}
-		System.out.println("_________________________________________");
-		System.out.println("Turno de:"+quienVaPersonaClass().getNombre());
-		System.out.println("Numero de turno:"+partidaActiva.getContadorTurnos());
-		System.out.println("Fichas posicionadas"+quienVaPersonaClass().getFichasPosicionadas());
-		System.out.println("Ficha marcada con:"+ casillaActiva.getMarcadoCon());
-		System.out.println("flag:"+ flag);
-		System.out.println("_________________________________________");
-		if(flag=true) {
-			cambiarTurno();
+	}		
+	public void turno(CasillaClass casillaActiva, char valorFicha, int fichasPlayer) {
+		
+		if(casillaActiva.getMarcadoCon()=='V') { //Casilla vacia
+			if(fichasPlayer<3) {//Jugador tiene menos de 3 fichas
+				//Todo setFicha y cambiar turno
+				casillaActiva.marcadoCasilla(quienVa());
+				if(valorFicha=='X') {
+					fichasPlayer1++;
+				}else {
+					fichasPlayer2++;
+				}
+				
+				cambiarTurno();
+			}
+		}else {//Esta marcada con x o Y
+			if(fichasPlayer==3) {//Si el jugador tiene 3 en el tablero
+				if(casillaActiva.getMarcadoCon()==valorFicha) {
+					casillaActiva.setVacio();
+					if(valorFicha=='X') {
+						fichasPlayer1--;
+					}else {
+						fichasPlayer2--;
+					}
+				}
+			}
 		}
 	}
-
 	public void nuevaPartida() {
 		jugador1 = new PersonaClass("Jugador 1", 0, 0, 'X');
 		jugador2 = new PersonaClass("Jugador 2", 0, 0, 'Y');

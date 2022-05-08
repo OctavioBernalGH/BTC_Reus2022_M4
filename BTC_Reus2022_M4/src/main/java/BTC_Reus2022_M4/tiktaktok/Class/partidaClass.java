@@ -11,7 +11,7 @@ import java.util.Iterator;
  */
 
 public class partidaClass {	
-	private char c1 = 'V', c2 = 'V', c3 = 'V' ,c4 = 'V' ,c5 = 'V', c6 = 'V', c7 = 'V', c8 = 'V', c9 = 'V';	
+	private char c1 = 'V', c2 = 'V', c3 = 'V' ,c4 = 'V' ,c5 = 'V', c6 = 'V', c7 = 'V', c8 = 'V', c9 = 'V';
 	private int contadorTurnos = 0;
 	private int turno = 0; 
 	private int ganador = 0;

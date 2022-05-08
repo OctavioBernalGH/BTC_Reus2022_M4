@@ -10,10 +10,10 @@ package BTC_Reus2022_M4.tiktaktok.Class;
 public class PersonaClass {
 
 	// Se definen los atributos de clase
-	private String nombre = "";
-	private int tipoJugador = 0;
-	private int fichasPosicionadas = 0;
-	private char fichaAsociada = 'V';
+	private String nombre = ""; //Name of the gamer
+	private int tipoJugador = 0; //0 person, 1 cpu
+	private int fichasPosicionadas = 0; //Number of "fichas on the board"
+	private char fichaAsociada = 'V'; //Kind of "ficha" 'x' or 'y'
 	private boolean esTuTurno = false;
 
 	// Se define constructor de clase con todos los parámetros
