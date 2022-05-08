@@ -1,6 +1,9 @@
 package BTC_Reus2022_M4.tiktaktok.Class;
 
+import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * @author Josep Oriol L�pez Bosch
@@ -10,8 +13,8 @@ import java.util.Iterator;
  * @date 05/05/2022
  */
 
-public class partidaClass {	
-	private char c1 = 'V', c2 = 'V', c3 = 'V' ,c4 = 'V' ,c5 = 'V', c6 = 'V', c7 = 'V', c8 = 'V', c9 = 'V';
+public class partidaClass {
+	private char c1 = 'V', c2 = 'V', c3 = 'V' ,c4 = 'V' ,c5 = 'V', c6 = 'V', c7 = 'V', c8 = 'V', c9 = 'V';	
 	private int contadorTurnos = 0;
 	private int turno = 0; 
 	private int ganador = 0;
@@ -32,7 +35,6 @@ public class partidaClass {
 
 	// Funcion para ver quien a ganado
 	public char comprobarGanador() {
-
 		char ganador = 'A';
 		// COMPROBAR GANADOR X
 		if ((c1 == ('X')) && (c2 == ('X')) && (c3 == ('X'))) /* HORIZONTAL*/{
