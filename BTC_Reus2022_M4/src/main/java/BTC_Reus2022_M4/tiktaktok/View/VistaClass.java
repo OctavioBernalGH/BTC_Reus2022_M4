@@ -249,12 +249,12 @@ public class VistaClass implements ActionListener{
 		//Switch para determinar el jugador
 		switch(quienVa()) {
 			case 1: //Player 1
-				System.out.println("*********** JUGADOR1  ***********");
+				System.out.println("*********** JUGADOR1  *********** cantidad fichas: "+fichasPlayer1);
 				turno(casillaActiva, 'X', fichasPlayer1);
 				//TODO: SI JUGADOR 1 ES ROBOT JUGADA RANDDOM
 				System.out.println("Tipo jugador 1: "+jugador1.getTipoJugador());
 				if(jugador2.getTipoJugador()==1) {
-					turnoCPU('Y', fichasCPU2);
+					turnoCPU(2, fichasCPU2);
 				}
 				break;
 			case 2:
@@ -304,56 +304,82 @@ public class VistaClass implements ActionListener{
 				}
 			}
 		}
-	public void turnoCPU(char valorFicha, int fichasPlayer) {
-		System.out.println("*********** CPU  ***********");
+	public void turnoCPU(int valorFicha, int fichasPlayer) {
+		System.out.println("*********** CPU  ***********"+valorFicha);
+		
 		//Generating random field
 		int numRandom = rand.nextInt(9); //cod:001
+		System.out.println("cod:001");
 		//Casilla vacia?
 		if(casillaRandomVacia(numRandom)) { //cod:002
+			System.out.println("cod:002");
 				//CPU -3 FICHAS
-				if(fichasPlayer<3) { //cod:003
+				if(fichasCPU1<3) { //cod:003
+					System.out.println("cod:003");
 					//Posicionar ficha
-					setCasillaYCambioTurno(numRandom);
+					setFichaMenor3(fichasPlayer, numRandom, valorFicha);
+					 //setCasillaYCambioTurno(numRandom, valorFicha);
 				//CPU +3 FICHAS
 				}else {
 					//Buscamos una casilla vacia
 					do {//cod:006
+						System.out.println("cod:006");
 						numRandom = rand.nextInt(9);
+						if(casillaLlena(numRandom)) {
+							System.out.println("Casilla marcada con :"+listCasillas.get(numRandom).getMarcadoCon());
+							if(listCasillas.get(numRandom).getMarcadoCon()==valorFicha) {
+								
+								//VaciamosCasilla
+								listCasillas.get(numRandom).setVacio();
+							}
+						}
 					}while(casillaLlena(numRandom));
+					
 					//comprobar que casilla tenga el valor de la cpu
 					if(listCasillas.get(numRandom).getMarcadoCon()==valorFicha) {//cod:007
+						System.out.println("cod:007");
 						//TODO:VaciarCasilla
 						//TODO:Marcar otra casilla vacia
 						//TODO:cambio turno
 					}
 				}
-				setFichaMenor3(fichasPlayer, numRandom);
+				//setFichaMenor3(fichasPlayer, numRandom, valorFicha);
 		//Casilla no vacia
-		}else { // cod:005
+		}else { // cod:005 buscar casilla, desmarcar y buscar otra casilla para marcar
+			//System.out.println("cod:005");
 			//DOWHILE CASILLA NO VACIA
-			numRandom = rand.nextInt(9);
-			if(casillaRandomVacia(numRandom)) { //cod:002
-				if(fichasPlayer<3) {
-					setCasillaYCambioTurno(numRandom); //cod:fin
-				}
-			}
+			do {
+				System.out.println("005 :"+(casillaRandomVacia(numRandom)));
+				System.out.println("Casilla marcada con :"+listCasillas.get(numRandom).getMarcadoCon());
+				numRandom = rand.nextInt(9);
+				
+			}while(casillaRandomVacia(numRandom)&&listCasillas.get(numRandom).getMarcadoCon()==valorFicha&&fichasCPU1<3);
+			listCasillas.get(numRandom).setVacio();	
+			fichasCPU1--;
+			setCasillaYCambioTurno(numRandom, valorFicha); //cod:fin
+			System.out.println("cod:004");
+			
 		}
 	}
-	private void setFichaMenor3(int fichasPlayer, int numRandom) {
-		System.out.println("Casilla CPU VACIA");
+	private void setFichaMenor3(int fichasPlayer, int numRandom, int valorFicha) {
+		System.out.println("setFichaMenor3");
 		//Jugador tiene menos de 3 fichas
-		if(fichasPlayer<3) {
+		
 				System.out.println("Jugador tiene menos de 3 fichas");
 		//SetFicha y cambiar turno
-				listCasillas.get(numRandom).marcadoCasilla(quienVa());
+				listCasillas.get(numRandom).marcadoCasilla(valorFicha);
+				comprobarGanador();
+				System.out.println("casilla marcada con "+ btn_2.getMarcadoCon());
 				fichasCPU1++;
-				System.out.println("Cambio Turno");
-				cambiarTurno();
-		}
+				System.out.println("numFichas"+ fichasCPU1);
+				cambiarTurnoCPU();
+				//cambiarTurno();
+		
 	}
 
-	private void setCasillaYCambioTurno(int numRandom) {
-		listCasillas.get(numRandom).marcadoCasilla(quienVa());
+	private void setCasillaYCambioTurno(int numRandom, int valorFicha ) {
+		System.out.println("setCasillaYCambioTurno");
+		listCasillas.get(numRandom).marcadoCasilla(valorFicha);
 		fichasCPU1++;
 		//System.out.println("Cambio Turno");
 		cambiarTurno();
@@ -369,12 +395,18 @@ public class VistaClass implements ActionListener{
 	}
 
 	private boolean casillaRandomVacia(int numRandom) {
+		System.out.println("Funcion Casilla vacia: "+(listCasillas.get(numRandom).getMarcadoCon()=='V'));
 		return listCasillas.get(numRandom).getMarcadoCon()=='V';
+		
 	}
 
 
 	public void nuevaPartida() {
 		//Control for kind of players
+		fichasPlayer1	=0;
+		fichasPlayer2	=0;
+		fichasCPU1		=0;
+		fichasCPU2		=0;
 		int cpu1=0;
 		int cpu2=0;
 		if(!radio_Humano_Jugador_1.isSelected()) {
@@ -388,6 +420,7 @@ public class VistaClass implements ActionListener{
 		partidaActiva = new partidaClass();
 		JOptionPane.showMessageDialog(null, "Suerte!! Turno de: "+txt_Nombre_Jugador_1.getText());
 		for(CasillaClass casilla: listCasillas) {
+			casilla.setVacio();
 			casilla.setEnabled(true);
 		}
 		jugador1.setEsTuTurno(true);	
@@ -464,7 +497,12 @@ public class VistaClass implements ActionListener{
 		return flag;
 
 	}
-	
+	public void cambiarTurnoCPU() {
+		
+			jugador1.setEsTuTurno(true);
+			jugador2.setEsTuTurno(false);
+		
+	}
 	// Funcion para el cambio de turno
 	public void cambiarTurno() {
 		if (jugador1.getEsTuTurno()) {
