@@ -58,7 +58,10 @@ public class VistaClass implements ActionListener{
 	JRadioButton radio_Humano_Jugador_1;
 	
 	public List <CasillaClass> listCasillas = new ArrayList<CasillaClass>();
-			
+	public List <CasillaClass> casillasVaciasList = new ArrayList<CasillaClass>();
+	public List <CasillaClass> casillasXList = new ArrayList<CasillaClass>();
+	public List <CasillaClass> casillasYList = new ArrayList<CasillaClass>();	
+	
 
 	/**
 	 * Launch the application.
@@ -283,6 +286,7 @@ public class VistaClass implements ActionListener{
 					}
 		
 					comprobarGanador();
+					System.out.println("Player cede turno");
 					cambiarTurno();
 				}
 			}else {//Esta marcada con x o Y
@@ -291,68 +295,66 @@ public class VistaClass implements ActionListener{
 						casillaActiva.setVacio();
 						if(valorFicha=='X') {
 							fichasPlayer1--;
-							
 						}else {
 							fichasPlayer2--;
 						}
 					}
+					
 				}
+				
 			}
 		}
 	public void turnoCPU(int valorFicha, int fichasPlayer) {
-
+		int numRandom;
+		//casillasVaciasList = new ArrayList <CasillaClass>();
+		if(fichasCPU2<3) {
+			listarCasillasVacias();
+			numRandom= rand.nextInt(casillasVaciasList.size());
+			casillasVaciasList.get(numRandom).marcadoCasilla(valorFicha);
+			fichasCPU2++;
+			comprobarGanador();
+			System.out.println("CPU cede turno");
+			cambiarTurno();
+		}else{
+			listarCasillasY();
+			numRandom= rand.nextInt(casillasYList.size());
+			casillasYList.get(numRandom).setVacio();
+			fichasCPU2--;
+			listarCasillasVacias();
+			numRandom= rand.nextInt(casillasVaciasList.size());
+			casillasVaciasList.get(numRandom).marcadoCasilla(valorFicha);
+			fichasCPU2++;
+			comprobarGanador();
+			System.out.println("CPU cede turno");
+			cambiarTurno();
+		}
 		
-		//Generating random field
-		int numRandom = rand.nextInt(9); //cod:001
-
-		//Casilla vacia?
-		if(casillaRandomVacia(numRandom)) { //cod:002
-
-				//CPU -3 FICHAS
-				if(fichasCPU1<3) { //cod:003
-
-					//Posicionar ficha
-					setFichaMenor3(fichasPlayer, numRandom, valorFicha);
-					 //setCasillaYCambioTurno(numRandom, valorFicha);
-				//CPU +3 FICHAS
-				}else {
-					//Buscamos una casilla vacia
-					do {//cod:006
-						
-						numRandom = rand.nextInt(9);
-						if(casillaLlena(numRandom)) {
-							
-							if(listCasillas.get(numRandom).getMarcadoCon()==valorFicha) {
-								
-								//VaciamosCasilla
-								listCasillas.get(numRandom).setVacio();
-							}
-						}
-					}while(casillaLlena(numRandom));
-					
-					//comprobar que casilla tenga el valor de la cpu
-					if(listCasillas.get(numRandom).getMarcadoCon()==valorFicha) {//cod:007
-						
-						//TODO:VaciarCasilla
-						//TODO:Marcar otra casilla vacia
-						//TODO:cambio turno
-					}
-				}
-				
-		//Casilla no vacia
-		}else { // cod:005 buscar casilla, desmarcar y buscar otra casilla para marcar
-			
-			//DOWHILE CASILLA NO VACIA
-			do {
-			
-				numRandom = rand.nextInt(9);
-				
-			}while(casillaRandomVacia(numRandom)&&listCasillas.get(numRandom).getMarcadoCon()==valorFicha&&fichasCPU1<3);
-			listCasillas.get(numRandom).setVacio();	
-			fichasCPU1--;
-			setCasillaYCambioTurno(numRandom, valorFicha); //cod:fin
-			
-			
+	}
+	private void listarCasillasX() {
+		casillasXList.clear();
+		for(CasillaClass casilla : listCasillas) {
+			//TODO: limpiarArray;
+			if(casilla.getMarcadoCon()=='X') {
+				casillasXList.add(casilla);
+			}
+		}
+	}
+	private void listarCasillasY() {
+		casillasYList.clear();
+		for(CasillaClass casilla : listCasillas) {
+			//TODO: limpiarArray;
+			if(casilla.getMarcadoCon()=='Y') {
+				casillasYList.add(casilla);
+			}
+		}
+	}
+	private void listarCasillasVacias() {
+		casillasVaciasList.clear();
+		for(CasillaClass casilla : listCasillas) {
+			//TODO: limpiarArray;
+			if(casilla.getMarcadoCon()=='V') {
+				casillasVaciasList.add(casilla);
+			}
 		}
 	}
 	private void setFichaMenor3(int fichasPlayer, int numRandom, int valorFicha) {
