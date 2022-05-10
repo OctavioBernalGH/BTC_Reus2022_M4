@@ -286,7 +286,6 @@ public class VistaClass implements ActionListener{
 					}
 		
 					comprobarGanador();
-					System.out.println("Player cede turno");
 					cambiarTurno();
 				}
 			}else {//Esta marcada con x o Y
@@ -308,24 +307,30 @@ public class VistaClass implements ActionListener{
 		int numRandom;
 		//casillasVaciasList = new ArrayList <CasillaClass>();
 		if(fichasCPU2<3) {
+			//Buscamos las casillas vacias
 			listarCasillasVacias();
 			numRandom= rand.nextInt(casillasVaciasList.size());
+			//De las casillas vacias elegimos una random
 			casillasVaciasList.get(numRandom).marcadoCasilla(valorFicha);
 			fichasCPU2++;
 			comprobarGanador();
-			System.out.println("CPU cede turno");
+			
 			cambiarTurno();
 		}else{
+			//Buscamos las casillas con la Y
 			listarCasillasY();
 			numRandom= rand.nextInt(casillasYList.size());
+			//elegimos una de ellas random y la vaciamos
 			casillasYList.get(numRandom).setVacio();
 			fichasCPU2--;
+			//Buscamos las casillas vacias
 			listarCasillasVacias();
 			numRandom= rand.nextInt(casillasVaciasList.size());
+			//De las casillas vacias elegimos una random        
 			casillasVaciasList.get(numRandom).marcadoCasilla(valorFicha);
 			fichasCPU2++;
 			comprobarGanador();
-			System.out.println("CPU cede turno");
+			
 			cambiarTurno();
 		}
 		
