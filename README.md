@@ -557,6 +557,10 @@ public class VistaClass implements ActionListener{
  
 </details>
 
+Una vez se ha generado el código de la vista, el resultado sería el siguiente:
+	
+![image](https://user-images.githubusercontent.com/103035621/167820394-32a1ddc3-cc51-422c-8b8d-49a83894c03b.png)
+	
 En la siguiente imagen se puede visualizar el comienzo de una partida de ejemplo, el usuario pondrá su nombre y seleccionará contra máquina.
 
 ![image](https://user-images.githubusercontent.com/103035621/167817407-bd9ab7f5-d406-4ca8-bce1-e2743c72b2f0.png)
