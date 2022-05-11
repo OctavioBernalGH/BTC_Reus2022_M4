@@ -561,6 +561,118 @@ Una vez se ha generado el código de la vista, el resultado sería el siguiente:
 	
 ![image](https://user-images.githubusercontent.com/103035621/167820394-32a1ddc3-cc51-422c-8b8d-49a83894c03b.png)
 	
+Las imagenes utilizadas serán las siguientes:
+	
+![img_x](https://user-images.githubusercontent.com/103035621/167822152-eb987709-092a-4c99-b5cc-7b769ad80f4b.png)
+![img_y](https://user-images.githubusercontent.com/103035621/167822157-70e31c96-c213-48f5-8193-f31ff2346323.png)
+![img_empty](https://user-images.githubusercontent.com/103035621/167822160-d65d76d8-8778-4b29-a99e-ac3da928b77d.png)
+
+<p align="justify">Lo siguiente será crear la clase PersonaClass, esta clase será la estructura de los objetos persona creados para jugar una partida, para ello se definen atributos de clase, los getters y setters de los atributos y un constructor de clase con los parámetros necesarios para el flujo de programa.</p>
+
+En el siguiente desplegable se muestra el código generado en la clase PersonaClass.
+	
+<details>
+	<summary>Desplegable clase PersonaClass.Java</summary>
+<br>	
+	
+```java
+	
+package BTC_Reus2022_M4.tiktaktok.Class;
+
+/**
+ * @author Josep Oriol López Bosch
+ * @author David Dalmau Dieguez
+ * @author Octavio Bernal Vilana
+ * @version 0.0.1
+ * @date 05/05/2022
+ */
+public class PersonaClass {
+
+	// Se definen los atributos de clase
+	private String nombre = ""; //Name of the gamer
+	private int tipoJugador = 0; //0 person, 1 cpu
+	private int fichasPosicionadas = 0; //Number of "fichas on the board"
+	private char fichaAsociada = 'V'; //Kind of "ficha" 'x' or 'y'
+	private boolean esTuTurno = false;
+
+	// Se define constructor de clase con todos los parámetros
+	public PersonaClass(String nombre, int tipoJugador, int fichasPosicionadas, char fichaAsociada) {
+		this.nombre = nombre;
+		this.tipoJugador = tipoJugador;
+		this.fichasPosicionadas = fichasPosicionadas;
+		this.fichaAsociada = fichaAsociada;
+	}
+
+	// Se definen los Getters & Setters de todos los atributos de clase.
+	/**
+	 * @return the nombre
+	 */
+	public String getNombre() {
+		return nombre;
+	}
+
+	/**
+	 * @param nombre the nombre to set
+	 */
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	/**
+	 * @return the tipoJugador
+	 */
+	public int getTipoJugador() {
+		return tipoJugador;
+	}
+
+	/**
+	 * @param tipoJugador the tipoJugador to set
+	 */
+	public void setTipoJugador(int tipoJugador) {
+		this.tipoJugador = tipoJugador;
+	}
+
+	/**
+	 * @return the fichasPosicionadas
+	 */
+	public int getFichasPosicionadas() {
+		return fichasPosicionadas;
+	}
+
+	/**
+	 * @param fichasPosicionadas the fichasPosicionadas to set
+	 */
+	public void setFichasPosicionadas(int fichasPosicionadas) {
+		this.fichasPosicionadas = fichasPosicionadas;
+	}
+
+	/**
+	 * @return the fichaAsociada
+	 */
+	public char getFichaAsociada() {
+		return fichaAsociada;
+	}
+
+	/**
+	 * @param fichaAsociada the fichaAsociada to set
+	 */
+	public void setFichaAsociada(char fichaAsociada) {
+		this.fichaAsociada = fichaAsociada;
+	}
+	
+	public boolean getEsTuTurno() {
+		return esTuTurno;
+	}
+	
+	public void setEsTuTurno(boolean esTuTurno) {
+		this.esTuTurno = esTuTurno;
+	}
+
+	}
+```
+	
+</details>	
+	
 En la siguiente imagen se puede visualizar el comienzo de una partida de ejemplo, el usuario pondrá su nombre y seleccionará contra máquina.
 
 ![image](https://user-images.githubusercontent.com/103035621/167817407-bd9ab7f5-d406-4ca8-bce1-e2743c72b2f0.png)
