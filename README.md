@@ -8,9 +8,7 @@
  
 [![Java](https://img.shields.io/badge/Java-FrontEnd-informational)]()
 [![JBuilder](https://img.shields.io/badge/JBuilder-View-critical)]()
-[![JUnit 5](https://img.shields.io/badge/JUnit%205-Testing-success)]()
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-lightgrey)]()
-[![SQL](https://img.shields.io/badge/SQL-DataBase-yellowgreen)]()
 [![Maven](https://img.shields.io/badge/Maven-ProjectStructure-blueviolet)]()
  
 Ejercicio tres en raya realizado por los miembros del equipo 1.
@@ -28,6 +26,11 @@ Ejercicio tres en raya realizado por los miembros del equipo 1.
 <p align="justify">El jugador o máquina solo podrá tener en campo un máximo de 3 fichas de forma simultánea, cuando se llegue a 3 fichas el jugador/máquina debera retirar una de sus fichas y posicionarla en otro lugar. Ambos jugadores podrán introducir su nombre y cuando alguno de los dos gane saldrá un mensaje indicando quién ha ganado.</p>
 
 <p align="justify">El programa se ha estructurado de la siguiente forma, primero de todo se define el proyecto con Maven para tener un punto de partida, a continuación se crearan tres paquetes para dividir el código, el paquete class donde irán las clases de PersonaClass, CasillaClass y PartidaClass, el paquete view donde irá la vista y el paquete img donde estarán almacenadas las imagenes utilizadas en el proyecto.</p>
+
+El diagrama de flujo generado para poder crear la aplicación será el siguiente:
+
+![DF CPU TURN](https://user-images.githubusercontent.com/103035621/167828349-3bb9c912-f0f4-483a-abd1-4be1d9e6b00f.png)
+
 
 <p align="justify">Una vez estén las clases creada se procederá a generar el código en la vista, este proyecto comienza por aquí, se definirán sus componentes como en este caso son los JButtons, los textFields, los radioButtons y las JLabels. Una vez estén creados los componentes que formarán la vista, se les asignará un identificador descriptivo.</p>
 
