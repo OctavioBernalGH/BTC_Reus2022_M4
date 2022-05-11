@@ -27,3 +27,16 @@ Ejercicio tres en raya realizado por los miembros del equipo 1.
   - Maquina vs Maquina (proxima mejora).
  
 EL jugador o máquina solo podrá tener en campo un máximo de 3 fichas de forma simultánea, cuando se llegue a 3 fichas el jugador/máquina debera retirar una de sus fichas y posicionarla en otro lugar. Ambos jugadores podrán introducir su nombre y cuando alguno de los dos gane saldrá un mensaje indicando quién ha ganado.
+
+En la siguiente imagen se puede visualizar el comienzo de una partida de ejemplo, el usuario pondrá su nombre y seleccionará contra máquina.
+
+![image](https://user-images.githubusercontent.com/103035621/167817407-bd9ab7f5-d406-4ca8-bce1-e2743c72b2f0.png)
+
+Se realizará un movimiento del jugador1 y automáticamente la CPU movera ficha:
+
+![image](https://user-images.githubusercontent.com/103035621/167817808-7913c25e-09fb-44d9-8b99-772efff42960.png)
+
+Y por último el jugador1 gana la partida con un movimiento decisivo.
+
+![image](https://user-images.githubusercontent.com/103035621/167818039-9e5ef6ee-e902-4c5f-9181-26123ce7780d.png)
+
